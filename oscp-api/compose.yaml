@@ -15,6 +15,13 @@ services:
       NODE_ENV: production
     ports:
       - 3023:3023
+    volumes:
+      #- .:/app
+      #- /app/node_modules
+      - node-tls:/node-tls
+    networks:
+      - prod-network
+
 
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
@@ -49,3 +56,12 @@ services:
 #   db-password:
 #     file: db/password.txt
 
+volumes:
+  node-tls:
+    external: true
+    name: node-tls
+
+networks:
+  prod-network:
+    external: true
+    name: prod-network

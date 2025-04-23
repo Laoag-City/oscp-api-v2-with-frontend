@@ -11,7 +11,7 @@ ARG NODE_VERSION=22.14.0
 FROM node:${NODE_VERSION}-alpine
 
 # Use production node environment by default.
-ENV NODE_ENV production
+ENV NODE_ENV=production
 
 
 WORKDIR /usr/src/app
@@ -35,4 +35,8 @@ COPY . .
 EXPOSE 3023
 
 # Run the application.
-CMD yarn start
+CMD ["yarn", "start"]
+# Use the following command to build the image:
+# docker build -t oscp-api .
+# Use the following command to run the container:
+# docker run -p 3023:3023 oscp-api
